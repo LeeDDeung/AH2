@@ -32,3 +32,8 @@
 - 빌드 결과 미리보기: `npm run preview`
 
 접속 주소: [http://127.0.0.1:5173](http://127.0.0.1:5173)
+
+## Docker 참고
+
+- `frontend/Dockerfile`로 빌드된 정적 프론트를 Nginx가 제공합니다.
+- Docker 네트워크 내부에서 `/api`, `/health`를 `backend:8080`으로 프록시합니다.

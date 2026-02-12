@@ -53,6 +53,13 @@
 
 기본 서버: `http://localhost:8080`
 
+## Docker 참고
+
+- `docker-compose.yml`가 `./DATA`를 `/app/DATA`로 읽기 전용 마운트합니다.
+- 백엔드 컨테이너는 `backend/.env` 환경값을 사용합니다.
+- 프론트 프록시 컨테이너가 서버 측에서 `x-api-key`를 붙이므로 브라우저에 키를 노출하지 않습니다.
+- Docker Compose에서는 백엔드 컨테이너 포트를 호스트에 공개하지 않습니다(내부 네트워크 전용).
+
 ## API 예시
 
 예측 요청:

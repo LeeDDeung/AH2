@@ -38,6 +38,29 @@ OpenAH는 프론트엔드와 백엔드가 연결된 서비스입니다.
 5. 브라우저 접속
    - [http://127.0.0.1:5173](http://127.0.0.1:5173)
 
+## Docker로 실행 (팀 공유용)
+
+1. 환경 파일 준비
+   - `cp backend/.env.example backend/.env`
+   - `cp .env.docker.example .env.docker`
+   - `backend/.env`에 `API_KEY`, `LOG_SALT`, `OPENAI_API_KEY` 설정
+   - `.env.docker`의 `API_KEY`를 `backend/.env`의 `API_KEY`와 동일하게 설정
+
+2. 데이터 파일 확인
+   - `DATA/train.csv`가 로컬에 있어야 합니다(백엔드 컨테이너에 읽기 전용 마운트).
+
+3. 빌드 및 실행
+   - `docker compose up --build -d`
+   - 포트 충돌 시:
+     - `FRONTEND_PORT=15173 docker compose up --build -d`
+
+4. 동작 확인
+   - 프론트엔드: [http://127.0.0.1:5173](http://127.0.0.1:5173)
+   - 프론트 프록시 경유 헬스체크: [http://127.0.0.1:5173/health](http://127.0.0.1:5173/health)
+
+5. 종료
+   - `docker compose down`
+
 ## 프론트-백엔드 연결 정보
 
 - 프론트엔드가 사용하는 API:
@@ -54,6 +77,7 @@ OpenAH는 프론트엔드와 백엔드가 연결된 서비스입니다.
 - `DATA/` 폴더는 git 추적에서 제외됩니다.
 - `.env` 파일은 git 추적에서 제외되고 `.env.example`만 추적됩니다.
 - 실제 키는 로컬 `backend/.env`에만 보관하세요.
+- Docker 모드에서는 백엔드 포트를 호스트에 공개하지 않고 프론트 포트만 공개합니다.
 
 ## 검증 명령어
 

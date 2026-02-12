@@ -1,0 +1,32 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: openah-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+      TRAIN_DATA_PATH: ../DATA/train.csv
+    volumes:
+      - ./DATA:/app/DATA:ro
+    expose:
+      - "8080"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        VITE_API_BASE_URL: /api
+    container_name: openah-frontend
+    env_file:
+      - ./.env.docker
+    depends_on:
+      - backend
+    ports:
+      - "${FRONTEND_PORT:-5173}:80"
+    restart: unless-stopped

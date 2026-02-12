@@ -22,6 +22,7 @@ DATA/
 .env
 .env.*
 !.env.example
+!.env.docker.example
 
 frontend/.env
 frontend/.env.*

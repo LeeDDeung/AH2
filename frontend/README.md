@@ -32,3 +32,8 @@ Notes:
 - Preview build: `npm run preview`
 
 Open: [http://127.0.0.1:5173](http://127.0.0.1:5173)
+
+## Docker Notes
+
+- Production-like frontend container is built via `frontend/Dockerfile` and served by Nginx.
+- `/api` and `/health` are proxied to backend container (`backend:8080`) inside Docker network.

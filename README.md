@@ -38,6 +38,29 @@ OpenAH is a connected full-stack service:
 5. Open browser
    - [http://127.0.0.1:5173](http://127.0.0.1:5173)
 
+## Run With Docker (Team Sharing)
+
+1. Prepare env files
+   - `cp backend/.env.example backend/.env`
+   - `cp .env.docker.example .env.docker`
+   - Set `backend/.env` values (`API_KEY`, `LOG_SALT`, `OPENAI_API_KEY`)
+   - Set `.env.docker` `API_KEY` to the same value as `backend/.env` `API_KEY`
+
+2. Ensure dataset exists locally
+   - `DATA/train.csv` must exist (mounted read-only into backend container).
+
+3. Build and start
+   - `docker compose up --build -d`
+   - If ports are already in use:
+     - `FRONTEND_PORT=15173 docker compose up --build -d`
+
+4. Verify
+   - Frontend: [http://127.0.0.1:5173](http://127.0.0.1:5173)
+   - Service health via frontend proxy: [http://127.0.0.1:5173/health](http://127.0.0.1:5173/health)
+
+5. Stop
+   - `docker compose down`
+
 ## Frontend-Backend Connection
 
 - Frontend calls:
@@ -54,6 +77,7 @@ OpenAH is a connected full-stack service:
 - `DATA/` is git-ignored.
 - `.env` files are git-ignored (only `.env.example` is tracked).
 - Keep real API keys only in local `backend/.env`.
+- In Docker mode, backend is not exposed to host ports; only frontend is exposed.
 
 ## Validation Commands
 

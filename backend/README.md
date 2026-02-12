@@ -54,6 +54,13 @@ This backend serves the current frontend API contract without requiring frontend
 
 Default server: `http://localhost:8080`
 
+## Docker Notes
+
+- `docker-compose.yml` mounts dataset from `./DATA` to `/app/DATA` (read-only).
+- Backend container uses env from `backend/.env`.
+- Frontend proxy container sends `x-api-key` server-side, so browser clients do not need to expose API keys.
+- Backend container port is internal-only in Docker Compose (not published to host).
+
 ## API Examples
 
 Prediction request:
