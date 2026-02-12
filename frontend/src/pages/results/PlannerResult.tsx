@@ -57,7 +57,12 @@ const PlannerResult: React.FC = () => {
                         <h2 className="text-lg font-medium text-brand-600 mb-1">고객 리스크 등급</h2>
                         <div className={`inline-flex items-center px-4 py-2 rounded-full border ${getRiskColor(riskAssessment.risk_band)}`}>
                             <Shield className="w-5 h-5 mr-2" />
-                            <span className="text-xl font-bold">{riskAssessment.risk_band} RISK</span>
+                            <span className="text-xl font-bold">
+                                {riskAssessment.risk_band === 'LOW' ? '저위험 (Low)' :
+                                    riskAssessment.risk_band === 'MEDIUM' ? '중위험 (Medium)' :
+                                        riskAssessment.risk_band === 'HIGH' ? '고위험 (High)' : riskAssessment.risk_band}
+                                {' '}위험군
+                            </span>
                         </div>
                     </div>
                     <div className="mt-4 md:mt-0 text-right">

@@ -1,16 +1,34 @@
-# React + Vite
+# openAH Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[한국어 문서](README.ko.md)
 
-Currently, two official plugins are available:
+Frontend app for prediction, distribution, planner, and AI chat workflows.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
 
-## React Compiler
+- Node.js 20+
+- npm 10+
+- Running backend at `http://127.0.0.1:8080` (default)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Environment
 
-## Expanding the ESLint configuration
+1. Copy env file (optional for local overrides):
+   - `cp .env.example .env.local`
+2. Main env values:
+   - `VITE_API_BASE_URL=/api`
+   - `BACKEND_TARGET=http://127.0.0.1:8080`
+   - `VITE_DEMO_MODE=false`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Notes:
+- `vite.config.js` proxies `/api` and `/health` to backend.
+- In local dev, `vite.config.js` can read `../backend/.env` and inject `x-api-key` automatically.
+
+## Run
+
+- Install: `npm install`
+- Dev server: `npm run dev -- --host 127.0.0.1 --port 5173`
+- Build: `npm run build`
+- Lint: `npm run lint`
+- Preview build: `npm run preview`
+
+Open: [http://127.0.0.1:5173](http://127.0.0.1:5173)

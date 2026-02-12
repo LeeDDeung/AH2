@@ -58,8 +58,8 @@ const DoctorForm: React.FC = () => {
         <div className="max-w-4xl mx-auto pb-20">
             <div className="mb-6 flex justify-between items-end">
                 <div>
-                    <h1 className="text-2xl font-serif font-bold text-brand-900">Patient Input (Clinical)</h1>
-                    <p className="text-brand-600 mt-1">Enter full clinical dataset for precise analysis.</p>
+                    <h1 className="text-2xl font-serif font-bold text-brand-900">환자 데이터 입력 (Clinical)</h1>
+                    <p className="text-brand-600 mt-1">정밀 분석을 위한 전체 임상 데이터를 입력해주세요.</p>
                 </div>
             </div>
 
@@ -67,79 +67,79 @@ const DoctorForm: React.FC = () => {
                 <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-6">
 
                     {/* Group 1: Basic */}
-                    <FormSection title="1. Demographics & Profile">
+                    <FormSection title="1. 인구통계 및 프로필">
                         <SelectField
                             name="basic.ageGroup"
-                            label="Age Group"
+                            label="연령대"
                             options={[
-                                { label: 'Unknown', value: 'UNKNOWN' },
-                                { label: '18-34', value: 'AGE_18_34' },
-                                { label: '35-37', value: 'AGE_35_37' },
-                                { label: '38-39', value: 'AGE_38_39' },
-                                { label: '40-42', value: 'AGE_40_42' },
-                                { label: '43-44', value: 'AGE_43_44' },
-                                { label: '45-50', value: 'AGE_45_50' },
+                                { label: '미상', value: 'UNKNOWN' },
+                                { label: '18-34세', value: 'AGE_18_34' },
+                                { label: '35-37세', value: 'AGE_35_37' },
+                                { label: '38-39세', value: 'AGE_38_39' },
+                                { label: '40-42세', value: 'AGE_40_42' },
+                                { label: '43-44세', value: 'AGE_43_44' },
+                                { label: '45-50세', value: 'AGE_45_50' },
                             ]}
                         />
-                        <NumberField name="basic.yearsInfertility" label="Years Infertility" />
+                        <NumberField name="basic.yearsInfertility" label="난임 기간 (년)" />
                     </FormSection>
 
                     {/* Group 2: Procedure */}
-                    <FormSection title="2. Procedure Details">
+                    <FormSection title="2. 시술 정보">
                         <SelectField
                             name="procedure.procedureType"
-                            label="Procedure Type"
+                            label="시술 유형"
                             options={[
-                                { label: 'IVF', value: 'IVF' },
-                                { label: 'DI', value: 'DI' },
+                                { label: 'IVF (체외수정)', value: 'IVF' },
+                                { label: 'DI (인공수정)', value: 'DI' },
                             ]}
                         />
-                        <BooleanField name="procedure.isOvulationStimulated" label="Ovulation Stimulated" />
-                        <BooleanField name="procedure.isSingleEmbryoTransfer" label="Single Embryo Transfer" />
-                        <BooleanField name="procedure.usePGT_A" label="PGT-A Used" />
-                        <BooleanField name="procedure.usePGT_M" label="PGT-M Used" />
+                        <BooleanField name="procedure.isOvulationStimulated" label="배란 유도 여부" />
+                        <BooleanField name="procedure.isSingleEmbryoTransfer" label="단일 배아 이식" />
+                        <BooleanField name="procedure.usePGT_A" label="PGT-A 사용" />
+                        <BooleanField name="procedure.usePGT_M" label="PGT-M 사용" />
                     </FormSection>
 
                     {/* Group 3: Causes */}
-                    <FormSection title="3. Etiology">
-                        <BooleanField name="causes.tubalDisease" label="Tubal Disease" />
-                        <BooleanField name="causes.ovulatoryDisorder" label="Ovulatory Disorder" />
-                        <BooleanField name="causes.maleFactor" label="Male Factor" />
-                        <BooleanField name="causes.endometriosis" label="Endometriosis" />
-                        <BooleanField name="causes.unknownFactor" label="Unexplained" />
+                    <FormSection title="3. 난임 원인">
+                        <BooleanField name="causes.tubalDisease" label="난관 요인" />
+                        <BooleanField name="causes.ovulatoryDisorder" label="배란 장애" />
+                        <BooleanField name="causes.maleFactor" label="남성 요인" />
+                        <BooleanField name="causes.endometriosis" label="자궁내막증" />
+                        <BooleanField name="causes.unknownFactor" label="원인 불명" />
                     </FormSection>
 
                     {/* Group 4: History */}
-                    <FormSection title="4. Obstetric History">
+                    <FormSection title="4. 산과력">
                         <SelectField
                             name="history.totalProcedures"
-                            label="Total Previous Procedures"
+                            label="총 이전 시술 횟수"
                             options={['0', '1', '2', '3', '4', '5', '6+'].map(v => ({ label: v, value: v }))}
                         />
                         <SelectField
                             name="history.totalBirths"
-                            label="Total Previous Births"
+                            label="총 출산 횟수"
                             options={['0', '1', '2', '3', '4', '5', '6+'].map(v => ({ label: v, value: v }))}
                         />
                     </FormSection>
 
                     {/* Group 5: Embryology */}
-                    <FormSection title="5. Embryology">
-                        <NumberField name="embryo.totalEmbryosCreated" label="Embryos Created" />
-                        <NumberField name="embryo.embryosTransferred" label="Embryos Transferred" />
+                    <FormSection title="5. 배아 정보">
+                        <NumberField name="embryo.totalEmbryosCreated" label="생성된 배아 수" />
+                        <NumberField name="embryo.embryosTransferred" label="이식된 배아 수" />
                         <SelectField
                             name="embryo.eggSource"
-                            label="Egg Source"
+                            label="난자 출처"
                             options={[
-                                { label: 'Patient', value: 'PATIENT' },
-                                { label: 'Donor', value: 'DONOR' },
-                                { label: 'Unknown', value: 'UNKNOWN' },
+                                { label: '자가 (Patient)', value: 'PATIENT' },
+                                { label: '공여 (Donor)', value: 'DONOR' },
+                                { label: '미상 (Unknown)', value: 'UNKNOWN' },
                             ]}
                         />
                     </FormSection>
 
                     <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                        {isSubmitting ? <Loader2 className="animate-spin" /> : 'Analyze Clinical Data'}
+                        {isSubmitting ? <Loader2 className="animate-spin" /> : '임상 데이터 분석 실행'}
                     </Button>
 
                 </form>
