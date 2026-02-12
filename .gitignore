@@ -15,6 +15,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Dataset files
+DATA/
+
 # Environment files (keep only examples tracked)
 .env
 .env.*
