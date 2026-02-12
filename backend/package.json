@@ -1,0 +1,16 @@
+{
+  "name": "openah-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Secure backend for prediction + GPT-5-mini chat",
+  "scripts": {
+    "dev": "node --watch --env-file=.env src/server.js",
+    "start": "node --env-file=.env src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "openai": "^4.104.0"
+  }
+}
